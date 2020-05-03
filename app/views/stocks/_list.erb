@@ -14,7 +14,7 @@
         <th scope="row"><%= s.ticker %></th>
         <td><%= s.name %></td>
         <td><%= s.last_price %></td>
-        <td><%= 'placeholder' %></td>
+        <td><%= link_to 'Remove', user_stock_path(s), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-outline-danger' %></td>
       </tr>
     <% end %>
     </tbody>
