@@ -1,0 +1,22 @@
+<% if !@my_stocks.empty? %>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Ticker</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @my_stocks.each do |s| %>
+      <tr>
+        <th scope="row"><%= s.ticker %></th>
+        <td><%= s.name %></td>
+        <td><%= s.last_price %></td>
+        <td><%= 'placeholder' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
