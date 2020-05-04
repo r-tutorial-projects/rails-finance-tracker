@@ -26,4 +26,22 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}" if first_name or last_name
     "Anonymous"
   end
+
+  def friend_of?(user)
+    friends.where(id: user.id).exists?
+  end
+
+  def search(param)
+    param.strip!
+    result = (matches(:email, param) + matches(:first_name, param) + matches(:last_name, param))
+                 .uniq.reject { |u| u.id == id }
+    return nil unless result
+    result
+  end
+
+  private
+
+  def matches(field_name, param)
+    User.where("#{field_name} like ?", "%#{param}%")
+  end
 end

@@ -1,0 +1,20 @@
+<h1>User details</h1>
+
+
+<div class="card card-header d-inline-block mb-3">
+  <div class="mb-3">
+    <strong>Name:</strong> <%= @user.full_name %>
+    <strong>Email:</strong> <%= @user.email %>
+    <div class="btn-group ml-3" role="group">
+      <% unless current_user.friend_of?(@user) %>
+        <%= link_to "Follow #{@user.full_name}", friendships_path(id: @user), class: 'btn btn-xs btn-primary', method: :post %>
+        </div>
+      <% else %>
+        </div>
+        <div class="badge badge-success">You are friends.</div>
+      <% end %>
+      </div>
+</div>
+
+
+<%= render 'stocks/list' %>

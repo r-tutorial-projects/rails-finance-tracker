@@ -1,0 +1,23 @@
+<div class="results-block d-inline-block">
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @friends %>
+  <div class="card card-header d-inline-block">
+    <% @friends.each do |f| %>
+      <div class="mb-3">
+        <strong>Name:</strong> <%= f.full_name %>
+        <strong>Email:</strong> <%= f.email %>
+        <div class="btn-group ml-3" role="group">
+          <%= link_to "View profile", user_path(f), class: 'btn btn-xs btn-outline-primary' %>
+          <% unless current_user.friend_of?(f) %>
+            <%= link_to "Follow #{f.full_name}", friendships_path(id: f), class: 'btn btn-xs btn-primary', method: :post %>
+            </div>
+          <% else %>
+            </div>
+            <div class="badge badge-success">You are friends.</div>
+          <% end %>
+          </div>
+    <% end %>
+    </div>
+<% end %>
